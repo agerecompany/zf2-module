@@ -1,0 +1,59 @@
+Agere\Module\Model\Module:
+  type: entity
+  table: entity
+  indexes:
+    mnemo:
+      columns: [ mnemo ]
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+      options:
+        unsigned: true
+    namespace:
+     type: string
+     length: 255
+    mnemo:
+      type: string
+      length: 32
+      unique: true
+    hidden:
+      type: integer
+      length: 1
+      default: '0'
+  oneToMany:
+    status:
+      targetModule: Magere\Status\Model\Status
+      mappedBy: entity
+    files:
+      targetModule: Magere\Files\Model\Files
+      mappedBy: entity
+    correspondence:
+      targetModule: Magere\Correspondence\Model\Correspondence
+      mappedBy: entity
+    fields:
+      targetModule: Magere\Fields\Model\Fields
+      mappedBy: entity
+    permissionSettings:
+      targetModule: Magere\Permission\Model\PermissionSettings
+      mappedBy: entity
+    contacts:
+      targetModule: Magere\Contacts\Model\Contacts
+      mappedBy: entity
+    cart:
+      targetModule: Magere\Cart\Model\Cart
+      mappedBy: entity
+    cartItem:
+      targetModule: Magere\Cart\Model\CartItem
+      mappedBy: entity
+    productGroup:
+      targetModule: Magere\ProductGroup\Model\ProductGroup
+      mappedBy: entity
+    schedule:
+      targetModule: Magere\Schedule\Model\Schedule
+      mappedBy: entity
+    switcher:
+      targetModule: Magere\Switcher\Model\Switcher
+      mappedBy: entity
