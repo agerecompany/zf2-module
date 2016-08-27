@@ -5,7 +5,8 @@ return [
 
 	'controller_plugins' => [
 		'factories' => [
-			'module' => Controller\Plugin\Factory\ModuleFactory::class,
+			'module' => Controller\Plugin\Factory\ModulePluginFactory::class,
+			'entity' => Controller\Plugin\Factory\EntityPluginFactory::class,
 		]
 	],
 
@@ -24,12 +25,7 @@ return [
 			'Module' => Model\Module::class,
 		],
 		'factories' => [
-			'Agere\Module\Service\ModuleService' => function ($sm) {
-				$em = $sm->get('Doctrine\ORM\ModuleManager');
-				$service = \Agere\Module\Service\Factory\Helper::create('module/module', $em);
-
-				return $service;
-			},
+			Service\ModuleService::class => Service\Factory\ModuleServiceFactory::class,
 		],
 	],
 
@@ -50,7 +46,7 @@ return [
 		],
 	],
 
-    /*'doctrine' => [
+	/*'doctrine' => [
         'driver' => [
             __NAMESPACE__ . '_driver' => [
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',

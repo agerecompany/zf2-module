@@ -3,10 +3,14 @@ namespace Agere\Module\Service;
 
 use Doctrine\ORM\EntityRepository;
 use	Agere\Module\Service\AbstractModuleService;
+use Agere\Core\Service\DomainServiceAbstract;
+use Agere\Module\Model\Module;
 
-class ModuleService extends AbstractModuleService {
+class ModuleService extends DomainServiceAbstract
+{
+	protected $entity = Module::class;
 
-	protected $_repositoryName = 'module';
+	//protected $_repositoryName = 'module';
 
 
 	/**
